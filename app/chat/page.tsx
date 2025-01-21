@@ -5,9 +5,6 @@ import MessageInput from "@/components/ui/input/MessageInput";
 import { ChatMessage } from "@/types/messaging/message";
 import { CiCirclePlus, CiEdit, CiMenuKebab, CiSearch } from "react-icons/ci";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
-import { MdOutlineSettings } from "react-icons/md";
-import { RiChatSmile2Line } from "react-icons/ri";
-import { TiMessages } from "react-icons/ti";
 
 const messages: ChatMessage[] = [
   {
@@ -42,20 +39,7 @@ export default function Chat() {
   return (
     <main className="flex h-screen overflow-hidden">
       <aside className="flex w-full basis-1/4">
-        <div className="flex w-full basis-1/4 flex-col bg-gray-800 px-4 py-8">
-          <div className="self-center">
-            <RiChatSmile2Line className="text-4xl text-purple-600" />
-          </div>
-          <div className="flex flex-col space-y-8 self-center pt-32">
-            <button aria-label="Messages">
-              <TiMessages className="text-2xl text-purple-600" />
-            </button>
-            <button aria-label="Settings">
-              <MdOutlineSettings className="text-2xl text-purple-600" />
-            </button>
-          </div>
-        </div>
-        <div className="flex w-full basis-3/4">
+        <div className="flex w-full">
           <article className="w-full">
             <section className="flex w-full items-center justify-between p-4">
               <h2 className="text-sm font-medium">
