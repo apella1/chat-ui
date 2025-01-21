@@ -19,7 +19,7 @@ export default function MessageInput() {
       onSubmit={handleSubmit}
     >
       <div className="flex flex-grow items-center space-x-2">
-        <button aria-label="Record voice message">
+        <button aria-label="Record voice message" type="button">
           <GrMicrophone className="text-xl text-purple-600" />
         </button>
         <input
@@ -32,10 +32,10 @@ export default function MessageInput() {
         />
       </div>
       <div className="flex items-center space-x-4">
-        <button aria-label="Attach file">
+        <button aria-label="Attach file" type="button">
           <GrAttachment className="text-xl text-purple-600" />
         </button>
-        <button className="" aria-label="Send message">
+        <button className="" aria-label="Send message" type="submit">
           <GrSend className="text-xl text-purple-600" />
         </button>
       </div>
