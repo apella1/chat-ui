@@ -1,4 +1,7 @@
+import ActiveUserCard from "@/components/ui/cards/ActiveUserCard";
 import ChatCard from "@/components/ui/cards/ChatCard";
+import MessageInput from "@/components/ui/input/MessageInput";
+import { BsPlus } from "react-icons/bs";
 import { CiCirclePlus, CiSearch } from "react-icons/ci";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
 import { MdOutlineSettings } from "react-icons/md";
@@ -7,7 +10,7 @@ import { TiEdit, TiMessages } from "react-icons/ti";
 
 export default function Chat() {
   return (
-    <main className="flex h-screen">
+    <main className="flex h-screen overflow-hidden">
       <aside className="flex w-full basis-1/4">
         <div className="flex w-full basis-1/4 flex-col bg-gray-800 px-4 py-8">
           <div className="self-center">
@@ -64,7 +67,17 @@ export default function Chat() {
             </section>
             <section className="flex w-full flex-col space-y-4 p-4">
               <p className="text-sm">All Messages</p>
-              <div className="flex w-full flex-col space-y-4">
+              <div className="flex max-h-full w-full flex-col space-y-4 overflow-y-auto">
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
+                <ChatCard />
                 <ChatCard />
                 <ChatCard />
                 <ChatCard />
@@ -77,7 +90,24 @@ export default function Chat() {
           <div className="h-screen border-l bg-gray-300"></div>
         </div>
       </aside>
-      <section className="w-full basis-2/3"></section>
+      <section className="flex h-screen w-full basis-3/4 flex-col overflow-y-auto">
+        <header className="flex w-full items-center justify-between p-4">
+          <div className="w-[20%]">
+            <ActiveUserCard />
+          </div>
+          <div className="flex items-center space-x-4">
+            <BsPlus className="text-2xl" />
+            <CiSearch />
+          </div>
+        </header>
+        <hr className="bg-gray-600" />
+        <section className="bg-default-chat-bg flex h-full flex-col bg-cover">
+          <div className="flex-grow">Messages Appear Here</div>
+          <div className="items-end p-4">
+            <MessageInput />
+          </div>
+        </section>
+      </section>
     </main>
   );
 }
