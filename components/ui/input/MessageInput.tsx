@@ -1,26 +1,44 @@
+"use client";
+
+import { FormEvent, useState } from "react";
 import { GrAttachment, GrMicrophone, GrSend } from "react-icons/gr";
 
 export default function MessageInput() {
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (message.trim()) {
+      setMessage(message);
+    }
+  };
+
   return (
-    <section className="flex w-full justify-between space-x-8 rounded-md bg-white p-4">
+    <form
+      className="flex w-full justify-between space-x-8 rounded-md bg-white p-4"
+      onSubmit={handleSubmit}
+    >
       <div className="flex flex-grow items-center space-x-2">
-        <button>
+        <button aria-label="Record voice message">
           <GrMicrophone className="text-xl text-purple-600" />
         </button>
         <input
           type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Type Message..."
           className="flex-grow outline-none"
+          aria-label="Message input"
         />
       </div>
       <div className="flex items-center space-x-4">
-        <button>
+        <button aria-label="Attach file">
           <GrAttachment className="text-xl text-purple-600" />
         </button>
-        <button>
+        <button className="" aria-label="Send message">
           <GrSend className="text-xl text-purple-600" />
         </button>
       </div>
-    </section>
+    </form>
   );
 }

@@ -2,11 +2,41 @@ import ChatsView from "@/components/ChatsView";
 import MessagesView from "@/components/MessagesView";
 import ActiveUserCard from "@/components/ui/cards/ActiveUserCard";
 import MessageInput from "@/components/ui/input/MessageInput";
+import { ChatMessage } from "@/types/messaging/message";
 import { CiCirclePlus, CiEdit, CiMenuKebab, CiSearch } from "react-icons/ci";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
 import { MdOutlineSettings } from "react-icons/md";
 import { RiChatSmile2Line } from "react-icons/ri";
 import { TiMessages } from "react-icons/ti";
+
+const messages: ChatMessage[] = [
+  {
+    value: "Good morning, how are you?",
+    type: "Incoming",
+    timeSent: "10:01",
+    dateSent: new Date(2025, 0, 11),
+  },
+  {
+    value:
+      "Good morning, I am doing so well. Did you catch last night's game? I heard a lot of things happened.",
+    type: "Outgoing",
+    timeSent: "10:01",
+    dateSent: new Date(2025, 0, 11),
+  },
+  {
+    value:
+      "No, I did not. Tell me about it. Where were you when you watched the match. I guess for yesterday's game you must have been out of the house",
+    type: "Incoming",
+    timeSent: "10:01",
+    dateSent: new Date(2025, 0, 12),
+  },
+  {
+    value: "Yes. I had to be at the house.",
+    type: "Outgoing",
+    timeSent: "10:01",
+    dateSent: new Date(2025, 0, 13),
+  },
+];
 
 export default function Chat() {
   return (
@@ -79,18 +109,18 @@ export default function Chat() {
             <ActiveUserCard />
           </div>
           <div className="flex items-center space-x-4">
-            <button>
+            <button aria-label="Search messages">
               <CiSearch />
             </button>
-            <button>
+            <button aria-label="View user options">
               <CiMenuKebab />
             </button>
           </div>
         </header>
         <hr className="bg-gray-600" />
-        <section className="bg-default-chat-bg flex h-full flex-col bg-cover">
+        <section className="flex h-full flex-col bg-default-chat-bg bg-cover">
           <div className="flex-grow p-4">
-            <MessagesView />
+            <MessagesView messages={messages} />
           </div>
           <div className="items-end p-4">
             <MessageInput />

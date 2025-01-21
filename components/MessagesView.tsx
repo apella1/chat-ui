@@ -1,39 +1,47 @@
+import { ChatMessage } from "@/types/messaging/message";
 import IncomingMessage from "./messaging/IncomingMessage";
 import OutgoingMessage from "./messaging/OutgoingMessage";
 
-export default function MessagesView() {
+function groupMessagesByDate(
+  messages: ChatMessage[],
+): Record<string, Array<ChatMessage>> {
+  return messages.reduce(
+    (grouped, message) => {
+      const dateKey = message.dateSent.toISOString().split("T")[0];
+
+      if (!grouped[dateKey]) {
+        grouped[dateKey] = [];
+      }
+      grouped[dateKey].push(message);
+      return grouped;
+    },
+    {} as Record<string, Array<ChatMessage>>,
+  );
+}
+
+export default function MessagesView({
+  messages,
+}: {
+  messages: ChatMessage[];
+}) {
+  const groupedMessages = Object.entries(groupMessagesByDate(messages));
+
   return (
-    <section className="flex flex-col space-y-2">
-      <IncomingMessage
-        message={{
-          value: "Good morning, how are you?",
-          type: "string",
-          timeSent: "10:01",
-        }}
-      />
-      <OutgoingMessage
-        message={{
-          value:
-            "Good morning, I am doing so well. Did you catch last night's game? I heard a lot of things happened.",
-          type: "string",
-          timeSent: "10:01",
-        }}
-      />
-      <IncomingMessage
-        message={{
-          value:
-            "No, I did not. Tell me about it. Where were you when you watched the match. I guess for yesterday's game you must have been out of the house",
-          type: "string",
-          timeSent: "10:01",
-        }}
-      />
-      <OutgoingMessage
-        message={{
-          value: "Yes. I had to be at the house.",
-          type: "string",
-          timeSent: "10:01",
-        }}
-      />
+    <section>
+      {groupedMessages.map((msgGroup) => (
+        <div key={msgGroup[0]} className="flex flex-col space-y-2">
+          <time className="my-2 self-center rounded-xl bg-white p-2 text-xs">
+            {msgGroup[0]}
+          </time>
+          {msgGroup[1].map((msg) =>
+            msg.type === "Incoming" ? (
+              <IncomingMessage message={msg} key={msg.timeSent} />
+            ) : (
+              <OutgoingMessage message={msg} key={msg.timeSent} />
+            ),
+          )}
+        </div>
+      ))}
     </section>
   );
 }
