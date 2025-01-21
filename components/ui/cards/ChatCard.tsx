@@ -8,7 +8,8 @@ const defaultChat: Chat = {
   lastMessage: {
     value: "Wow, your latest design is great!",
     timeSent: "10:15",
-    type: "text",
+    type: "Incoming",
+    dateSent: new Date(),
   },
 };
 
