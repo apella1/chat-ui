@@ -2,8 +2,7 @@ import MessagesView from "@/components/MessagesView";
 import ActiveUserCard from "@/components/ui/cards/ActiveUserCard";
 import ChatCard from "@/components/ui/cards/ChatCard";
 import MessageInput from "@/components/ui/input/MessageInput";
-import { BsPlus } from "react-icons/bs";
-import { CiCirclePlus, CiSearch } from "react-icons/ci";
+import { CiCirclePlus, CiMenuKebab, CiSearch } from "react-icons/ci";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
 import { MdOutlineSettings } from "react-icons/md";
 import { RiChatSmile2Line } from "react-icons/ri";
@@ -97,8 +96,12 @@ export default function Chat() {
             <ActiveUserCard />
           </div>
           <div className="flex items-center space-x-4">
-            <BsPlus className="text-2xl" />
-            <CiSearch />
+            <button>
+              <CiSearch />
+            </button>
+            <button>
+              <CiMenuKebab />
+            </button>
           </div>
         </header>
         <hr className="bg-gray-600" />
