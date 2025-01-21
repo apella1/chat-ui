@@ -14,6 +14,7 @@ export default {
       },
       backgroundImage: {
         login: "url(/images/login-bg.jpg)",
+        "default-chat-bg": "url(/images/default-chat-bg.jpg)",
       },
     },
   },
