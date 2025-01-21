@@ -1,3 +1,4 @@
+import MessagesView from "@/components/MessagesView";
 import ActiveUserCard from "@/components/ui/cards/ActiveUserCard";
 import ChatCard from "@/components/ui/cards/ChatCard";
 import MessageInput from "@/components/ui/input/MessageInput";
@@ -102,7 +103,9 @@ export default function Chat() {
         </header>
         <hr className="bg-gray-600" />
         <section className="bg-default-chat-bg flex h-full flex-col bg-cover">
-          <div className="flex-grow">Messages Appear Here</div>
+          <div className="flex-grow p-4">
+            <MessagesView />
+          </div>
           <div className="items-end p-4">
             <MessageInput />
           </div>
