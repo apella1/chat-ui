@@ -1,12 +1,12 @@
+import ChatsView from "@/components/ChatsView";
 import MessagesView from "@/components/MessagesView";
 import ActiveUserCard from "@/components/ui/cards/ActiveUserCard";
-import ChatCard from "@/components/ui/cards/ChatCard";
 import MessageInput from "@/components/ui/input/MessageInput";
-import { CiCirclePlus, CiMenuKebab, CiSearch } from "react-icons/ci";
+import { CiCirclePlus, CiEdit, CiMenuKebab, CiSearch } from "react-icons/ci";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
 import { MdOutlineSettings } from "react-icons/md";
 import { RiChatSmile2Line } from "react-icons/ri";
-import { TiEdit, TiMessages } from "react-icons/ti";
+import { TiMessages } from "react-icons/ti";
 
 export default function Chat() {
   return (
@@ -36,7 +36,7 @@ export default function Chat() {
                   <CiSearch className="text-xl" />
                 </button>
                 <button aria-label="New message">
-                  <TiEdit className="text-xl" />
+                  <CiEdit className="text-xl" />
                 </button>
               </div>
             </section>
@@ -57,34 +57,17 @@ export default function Chat() {
                 </p>
               </div>
               <div className="flex items-center space-x-2">
-                <p className="h-9 w-9 rounded-full bg-gray-400"></p>
-                <p className="h-9 w-9 rounded-full bg-gray-400"></p>
-                <p className="h-9 w-9 rounded-full bg-gray-400"></p>
-                <p className="h-9 w-9 rounded-full bg-gray-400"></p>
-                <p className="h-9 w-9 rounded-full bg-gray-400"></p>
-                <p className="h-9 w-9 rounded-full bg-gray-400"></p>
+                <p className="h-9 w-9 rounded-full bg-gray-300"></p>
+                <p className="h-9 w-9 rounded-full bg-gray-300"></p>
+                <p className="h-9 w-9 rounded-full bg-gray-300"></p>
+                <p className="h-9 w-9 rounded-full bg-gray-300"></p>
+                <p className="h-9 w-9 rounded-full bg-gray-300"></p>
+                <p className="h-9 w-9 rounded-full bg-gray-300"></p>
               </div>
             </section>
             <section className="flex w-full flex-col space-y-4 p-4">
-              <p className="text-sm">All Messages</p>
-              <div className="flex max-h-full w-full flex-col space-y-4 overflow-y-auto">
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-              </div>
+              <p className="text-sm font-medium text-blue-600">All Messages</p>
+              <ChatsView />
             </section>
           </article>
           <div className="h-screen border-l bg-gray-300"></div>
